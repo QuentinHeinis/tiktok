@@ -1,12 +1,37 @@
-import { Inter } from '@next/font/google'
+import axios from "axios"
+import { NextPage } from "next"
+import { Video } from "@/types"
+import VideoCard from "@/components/VideoCard"
+import NoResult from "@/components/NoResult"
 
-const inter = Inter({ subsets: [ 'latin' ] })
+interface IProps {
+  videos: Video[]
+}
 
-export default function Home() {
+const Home = ({ videos }: IProps) => {
+  console.log(videos)
   return (
     <>
-      <div className=''>
+      <div className='flex flex-col gap-10 videos h-full'>
+        {videos.length ? (
+          videos.map((video: Video) => (
+            <VideoCard post={video} key={video._id} />
+          ))
+        ) : (
+          <NoResult text={'No videos'} />
+        )}
       </div>
     </>
   )
 }
+
+export const getServerSideProps = async () => {
+  const { data } = await axios.get('http://localhost:3000/api/post')
+  return {
+    props: {
+      videos: data
+    }
+  }
+}
+
+export default Home
