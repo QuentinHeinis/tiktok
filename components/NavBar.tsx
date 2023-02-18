@@ -13,8 +13,9 @@ const NavBar = () => {
     return (
         <div className='w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4'>
             <Link href="/">
-                <div className='w-28 md:w-36'>
-                    <Image src={Logo} alt="tiktik" layout='responsive' />
+                <div className='w-28 md:w-36 flex font-bold text-2xl'>
+                    {/* <Image src={Logo} alt="tiktik" layout='responsive' /> */}
+                    <div className='first-letter:text-[#f51997]'>Tik</div><div className='first-letter:text-[#f51997]'>Tok</div>
                 </div>
             </Link>
             <div>SEARCH</div>
