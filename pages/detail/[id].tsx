@@ -17,6 +17,10 @@ const Detail = ({ postDetails }: IProps) => {
     const [ isVideoMuted, setIsVideoMuted ] = useState(false)
     const videoRef = useRef<HTMLVideoElement>(null)
 
+    const duration = videoRef.current?.duration
+    const currentTime = videoRef.current?.currentTime
+    const [ timeRemaining, setTimeRemaining ] = useState(0)
+
     const onVideoPress = () => {
         if (playing) {
             videoRef?.current?.pause()
@@ -28,6 +32,18 @@ const Detail = ({ postDetails }: IProps) => {
 
     }
     useEffect(() => {
+        const video = videoRef.current;
+        if (video) {
+            setInterval(() => {
+                const remaining = (video.currentTime / video.duration) * 100
+                setTimeRemaining(remaining);
+            }, 100);
+        }
+
+
+    }, [])
+
+    useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
         }
@@ -36,7 +52,7 @@ const Detail = ({ postDetails }: IProps) => {
     if (!post) return null
     return (
         <div className='flex w-full absolute top-0 left-0 bg-white flex-wrap lg:flex-nowrap'>
-            <div className='relative flex-1 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black'>
+            <div className='relative flex-1 w-[1000px] lg:w-9/12 flex justify-center items-center bg-[#101010]'>
                 <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50"><p className='text-white border-2 border-white rounded-full h-10 w-10 flex items-center justify-center'>X</p></div>
                 <div className='relative '>
                     <div className='h-screen flex items-center'>
@@ -61,6 +77,7 @@ const Detail = ({ postDetails }: IProps) => {
                     )}
                 </div>
             </div>
+            <div className='w-[90%] absolute left-[5%]  bottom-2 rounded-full bg-gray-700 h-1'><div className='h-1 rounded-l-full bg-red-400' style={{ width: `${timeRemaining}%` }}></div></div>
         </div>
     )
 }

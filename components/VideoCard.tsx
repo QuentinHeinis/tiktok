@@ -7,9 +7,8 @@ import { SpeakerWaveIcon, SpeakerXMarkIcon, PlayIcon, PauseIcon, } from '@heroic
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 interface IProps {
     post: Video,
-    play: boolean
 }
-const VideoCard: NextPage<IProps> = ({ post, play }) => {
+const VideoCard: NextPage<IProps> = ({ post }) => {
     const [ isHover, setIsHover ] = useState(false)
     const [ playing, setPlaying ] = useState(false)
     const [ isVideoMuted, setIsVideoMuted ] = useState(false)
@@ -70,7 +69,7 @@ const VideoCard: NextPage<IProps> = ({ post, play }) => {
     useEffect(() => {
         if (videoRef?.current) {
             videoRef.current.muted = isVideoMuted;
-            play = isVideoMuted
+
         }
     }, [ isVideoMuted ]);
 
