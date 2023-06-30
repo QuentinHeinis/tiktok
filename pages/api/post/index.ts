@@ -1,5 +1,5 @@
-import { client } from '@/utils/client'
-import { allPostsQuery } from '@/utils/queries'
+import { client } from '@/composable/client'
+import { allPostsQuery } from '@/composable/queries'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {

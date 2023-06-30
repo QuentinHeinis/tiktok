@@ -3,7 +3,7 @@ import { NextPage } from "next"
 import { Video } from "@/types"
 import VideoCard from "@/components/VideoCard"
 import NoResult from "@/components/NoResult"
-import { BASE_URL } from "@/utils"
+import { BASE_URL } from "@/composable"
 
 interface IProps {
   videos: Video[]

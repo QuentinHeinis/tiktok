@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { SanityAssetDocument } from '@sanity/client'
 import useAuthStore from '@/store/authStore'
-import { client } from '@/utils/client'
+import { client } from '@/composable/client'
 import { CloudArrowUpIcon } from '@heroicons/react/24/solid'
-import { topics } from '@/utils/constants'
-import { BASE_URL } from '@/utils'
+import { topics } from '@/composable/constants'
+import { BASE_URL } from '@/composable'
 
 const Upload = () => {
     const [ isLoading, setisLoading ] = useState(false)

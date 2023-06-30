@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { SpeakerWaveIcon, SpeakerXMarkIcon, PlayIcon, PauseIcon, } from '@heroicons/react/24/outline'
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 import axios from 'axios'
-import { BASE_URL } from '@/utils'
+import { BASE_URL } from '@/composable'
 import { Video } from '@/types'
-import { postDetailQuery } from '@/utils/queries'
+import { postDetailQuery } from '@/composable/queries'
 interface IProps {
     postDetails: Video
 }
